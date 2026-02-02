@@ -73,7 +73,7 @@ const About = () => {
                 About <span className="text-blue-300">TechMate Services</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Since 2020, we have been dedicated to empowering businesses with innovative digital solutions. 
+                Since 2022, we have been dedicated to empowering businesses with innovative digital solutions. 
                 Our mission is to bridge the gap between technology and business success through reliable, 
                 scalable, and future-ready applications.
               </p>

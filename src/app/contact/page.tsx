@@ -3,7 +3,7 @@
 
 import { Card, CardContent} from '@/components/ui/card';
 
-import {Phone, MapPin, Clock } from 'lucide-react';
+import {Phone, MapPin, Clock, Mail } from 'lucide-react';
 
 import React from 'react';
 
@@ -15,6 +15,12 @@ const contactInfo = [
     icon: <Phone className="h-6 w-6 text-primary-500" />,
     title: "Call Us",
     details: "0319-8400943",
+    description: "Mon-Fri from 9am to 6pm",
+  },
+  {
+    icon: <Mail className="h-6 w-6 text-primary-500" />,
+    title: "Email Us",
+    details: "techmate022@gmail.com",
     description: "Mon-Fri from 9am to 6pm",
   },
   {

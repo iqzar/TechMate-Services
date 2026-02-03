@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import {Phone, MapPin } from 'lucide-react';
+import {Phone, MapPin, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -20,10 +20,10 @@ const Footer = () => {
               We build future-ready mobile, web, and backend solutions to empower startups and enterprises with reliable and scalable digital solutions.
             </p>
             <div className="space-y-2">
-              {/*<div className="flex items-center space-x-2 text-gray-400">
+              <div className="flex items-center space-x-2 text-gray-400">
                 <Mail size={16} />
-                <span>superfixsolutionz@gmail.com</span>
-  </div>*/}
+                <span>techmate022@gmail.com</span>
+  </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <Phone size={16} />
                 <span>+92 319 8400943</span>

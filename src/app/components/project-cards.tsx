@@ -1,17 +1,11 @@
-"use client";
+'use client';
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import type { StaticImageData } from "next/image";
+import React from 'react';
+import Link from 'next/link';
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { motion } from 'framer-motion';
+
+import { Button } from '@/components/ui/button';
 
 import {
   Smartphone,
@@ -21,15 +15,9 @@ import {
   CreditCard,
   Clock,
   ArrowRight,
-} from "lucide-react";
+} from 'lucide-react';
 
-import type { LucideIcon } from "lucide-react";
-
-// Images
-import image1 from "../../app/public/m1.jpeg";
-import image2 from "../../app/public/m2.jpeg";
-import image3 from "../../app/public/m3.jpeg";
-
+import type { LucideIcon } from 'lucide-react';
 
 // ==================
 // Types
@@ -38,20 +26,16 @@ import image3 from "../../app/public/m3.jpeg";
 interface Project {
   title: string;
   subtitle: string;
-  image: StaticImageData;
   icon: LucideIcon;
   points: string[];
   link: string;
 }
 
 // ==================
-// Helper Function
+// Helper
 // ==================
 
-// Check if link is external
-const isExternalLink = (url: string) => {
-  return url.startsWith("http");
-};
+const isExternalLink = (url: string) => url.startsWith('http');
 
 // ==================
 // Projects Data
@@ -59,123 +43,115 @@ const isExternalLink = (url: string) => {
 
 const projects: Project[] = [
   {
-    title: "Emerald Beauty User App",
-    subtitle: "Flutter Beauty Services App",
-    image: image1,
+    title: 'Emerald Beauty User App',
+    subtitle: 'Flutter Beauty Services App',
     icon: Smartphone,
     points: [
-      "Flutter-based mobile application",
-      "Stripe & Apple Pay integration",
-      "Secure online payments",
-      "API integrations",
-      "User-friendly booking system",
+      'Flutter-based mobile application',
+      'Stripe & Apple Pay integration',
+      'Secure online payments',
+      'API integrations',
+      'User-friendly booking system',
     ],
-    link: "https://play.google.com/store/apps/details?id=com.emeraldbeauty.user",
+    link: 'https://play.google.com/store/apps/details?id=com.emeraldbeauty.user',
   },
 
   {
-    title: "Emerald Beauty Employee App",
-    subtitle: "Staff Management Application",
-    image: image2,
+    title: 'Emerald Beauty Employee App',
+    subtitle: 'Staff Management Application',
     icon: Smartphone,
     points: [
-      "Employee scheduling system",
-      "Booking management",
-      "Payment tracking",
-      "Flutter cross-platform app",
-      "Client management tools",
+      'Employee scheduling system',
+      'Booking management',
+      'Payment tracking',
+      'Flutter cross-platform app',
+      'Client management tools',
     ],
-    link: "https://play.google.com/store/apps/details?id=com.emeraldbeauty.employeefreelancer",
+    link: 'https://play.google.com/store/apps/details?id=com.emeraldbeauty.employeefreelancer',
   },
 
   {
-    title: "HelpDesk Helper",
-    subtitle: "Support Provider App",
-    image: image3,
+    title: 'HelpDesk Helper',
+    subtitle: 'Support Provider App',
     icon: MessageSquare,
     points: [
-      "Real-time video calling",
-      "Daily.co SDK integration",
-      "Ticket workflow system",
-      "Live customer support",
-      "Flutter-based solution",
+      'Real-time video calling',
+      'Daily.co SDK integration',
+      'Ticket workflow system',
+      'Live customer support',
+      'Flutter-based solution',
     ],
-    link: "https://play.google.com/store/apps/details?id=com.helpdesk.helper",
+    link: 'https://play.google.com/store/apps/details?id=com.helpdesk.helper',
   },
 
   {
-    title: "HelpDesk Instant Help",
-    subtitle: "Customer Support App",
-    image: image1,
+    title: 'HelpDesk Instant Help',
+    subtitle: 'Customer Support App',
     icon: MessageSquare,
     points: [
-      "Instant customer assistance",
-      "Video & voice calling",
-      "Ticket management",
-      "Secure communication",
-      "Multi-platform support",
+      'Instant customer assistance',
+      'Video & voice calling',
+      'Ticket management',
+      'Secure communication',
+      'Multi-platform support',
     ],
-    link: "https://play.google.com/store/apps/details?id=com.helpdesk.user",
+    link: 'https://play.google.com/store/apps/details?id=com.helpdesk.user',
   },
 
   {
-    title: "Time Management App",
-    subtitle: "Productivity Tool",
-    image: image2,
+    title: 'Time Management App',
+    subtitle: 'Productivity Tool',
     icon: Clock,
     points: [
-      "Task management system",
-      "Deadline reminders",
-      "Progress tracking",
-      "Local database (SQLite)",
-      "Smart notifications",
+      'Task management system',
+      'Deadline reminders',
+      'Progress tracking',
+      'Local database (SQLite)',
+      'Smart notifications',
     ],
-    link: "/contact",
+    link: '/contact',
   },
 
   {
-    title: "QraftConnect",
-    subtitle: "B2B Construction Platform",
-    image: image3,
+    title: 'QraftConnect',
+    subtitle: 'B2B Construction Platform',
     icon: MapPin,
     points: [
-      "Firebase real-time chat",
-      "Multi-language support",
-      "Advanced filtering",
-      "Authentication system",
-      "B2B workflow tools",
+      'Firebase real-time chat',
+      'Multi-language support',
+      'Advanced filtering',
+      'Authentication system',
+      'B2B workflow tools',
     ],
-    link: "https://apps.apple.com/us/app/qraftconnect/id6503102588",
+    link: 'https://apps.apple.com/us/app/qraftconnect/id6503102588',
   },
 
   {
-    title: "Caretaker App",
-    subtitle: "Elderly Care Solution",
-    image: image1,
+    title: 'Caretaker App',
+    subtitle: 'Elderly Care Solution',
     icon: Heart,
     points: [
-      "Live location tracking",
-      "Emergency calling",
-      "Push notifications",
-      "Firebase integration",
-      "Care monitoring system",
+      'Live location tracking',
+      'Emergency calling',
+      'Push notifications',
+      'Firebase integration',
+      'Care monitoring system',
     ],
-    link: "/contact",
+    link: '/contact',
   },
 
   {
-    title: "Tabarru Charity App",
-    subtitle: "Donation Platform",
-    image: image2,
+    title: 'Tabarru Charity App',
+    subtitle: 'Donation Platform',
     icon: CreditCard,
     points: [
-      "Secure donations",
-      "Stripe & SumUp SDK",
-      "Easy payment flow",
-      "Mosque support system",
-      "Flutter development",
+      'Secure donations',
+      'Stripe & SumUp SDK',
+      'Easy payment flow',
+      'Mosque support system',
+      'Flutter development',
     ],
-    link: "/contact",
+    link: '/contact',
   },
 ];
 
@@ -185,95 +161,69 @@ const projects: Project[] = [
 
 export default function ProjectsCards() {
   return (
-    <section className="py-20 bg-white">
+    <section className="relative py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => {
             const Icon = project.icon;
             const external = isExternalLink(project.link);
 
             return (
-              <Card
+              <motion.div
                 key={index}
-                className="overflow-hidden hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group glass-card rounded-2xl overflow-hidden transition-shadow hover:shadow-xl duration-300"
               >
-
-                {/* Image */}
-                <div className="aspect-video relative w-full">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
+                {/* Header */}
+                <div className="h-32 bg-blue-300 flex items-center justify-center relative overflow-hidden">
+                  <div className="relative z-10 w-16 h-16 rounded-2xl bg-white/80 backdrop-blur flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+                    <Icon className="w-7 h-7" />
+                  </div>
                 </div>
 
-                {/* Header */}
-                <CardHeader>
-                  <div className="flex items-center space-x-4 mb-4">
-
-                    <Icon className="text-blue-400 w-12 h-12" />
-
-                    <div>
-                      <CardTitle className="lg:text-2xl text-lg font-semibold text-gray-900">
-                        {project.title}
-                      </CardTitle>
-
-                      <p className="text-blue-400 text-sm font-medium">
-                        {project.subtitle}
-                      </p>
-                    </div>
-
-                  </div>
-                </CardHeader>
-
                 {/* Content */}
-                <CardContent>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold mb-1 text-gray-900">
+                    {project.title}
+                  </h3>
 
-                  <ul className="space-y-2 mb-6">
+                  <p className="mb-3 font-medium text-blue-400 text-sm">
+                    {project.subtitle}
+                  </p>
 
+                  {/* Points */}
+                  <ul className="list-disc list-inside space-y-2 mb-5 marker:text-blue-300">
                     {project.points.map((point, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start space-x-2"
-                      >
-                        <div className="w-2 h-2 bg-blue-300 rounded-full mt-2 flex-shrink-0" />
-
-                        <span className="text-gray-600">
-                          {point}
-                        </span>
+                      <li key={i} className="text-sm text-gray-600">
+                        {point}
                       </li>
                     ))}
-
                   </ul>
 
                   {/* Button */}
                   <Button
                     asChild
-                    className="w-full bg-blue-300 hover:bg-blue-400 rounded"
+                    className="w-full rounded bg-blue-400 hover:bg-blue-300 text-white border-0 focus-visible:ring-0"
                   >
                     <Link
                       href={project.link}
-                      target={external ? "_blank" : "_self"}
-                      rel={external ? "noopener noreferrer" : undefined}
+                      target={external ? '_blank' : '_self'}
+                      rel={external ? 'noopener noreferrer' : undefined}
                     >
-                      <span className="flex items-center justify-center">
+                      <span className="flex items-center justify-center text-black">
                         View Project
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </span>
                     </Link>
                   </Button>
-
-                </CardContent>
-
-              </Card>
+                </div>
+              </motion.div>
             );
           })}
-
         </div>
-
       </div>
     </section>
   );

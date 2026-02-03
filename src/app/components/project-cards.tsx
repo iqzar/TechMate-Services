@@ -175,7 +175,7 @@ export default function ProjectsCards() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group glass-card rounded-2xl overflow-hidden transition-shadow hover:shadow-xl duration-300"
+                className="group glass-card border rounded-2xl overflow-hidden transition-shadow shadow-sm hover:shadow-xl duration-300"
               >
                 {/* Header */}
                 <div className="h-32 bg-blue-300 flex items-center justify-center relative overflow-hidden">

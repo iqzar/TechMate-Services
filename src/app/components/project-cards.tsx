@@ -152,7 +152,7 @@ const projects: Project[] = [
       "Local database (SQLite)",
       "Smart notifications",
     ],
-    link: "/project",
+    link: "/projects",
   },
 
   {
@@ -185,7 +185,7 @@ const projects: Project[] = [
       "Firebase integration",
       "Care monitoring system",
     ],
-    link: "/project",
+    link: "/projects",
   },
 
   {
@@ -199,7 +199,7 @@ const projects: Project[] = [
       "Mosque support system",
       "Flutter development",
     ],
-    link: "/project",
+    link: "/projects",
   },
 ];
 
@@ -217,7 +217,7 @@ export default function ProjectsCards() {
         return (
           project.storeLinks.find((l) => l.type === "playStore")?.url ||
           project.link ||
-          "/project"
+          "/projects"
         );
       }
 
@@ -225,7 +225,7 @@ export default function ProjectsCards() {
         return (
           project.storeLinks.find((l) => l.type === "appStore")?.url ||
           project.link ||
-          "/project"
+          "/projects"
         );
       }
     }

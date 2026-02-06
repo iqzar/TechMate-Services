@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 
 import {
   Smartphone,
@@ -15,27 +15,57 @@ import {
   CreditCard,
   Clock,
   ArrowRight,
-} from 'lucide-react';
+} from "lucide-react";
 
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from "lucide-react";
 
 // ==================
 // Types
 // ==================
+
+type StoreLinkType = "playStore" | "appStore";
+
+interface StoreLink {
+  type: StoreLinkType;
+  url: string;
+}
 
 interface Project {
   title: string;
   subtitle: string;
   icon: LucideIcon;
   points: string[];
-  link: string;
+  link?: string; // fallback
+  storeLinks?: StoreLink[];
+}
+
+// ==================
+// Device Hook
+// ==================
+
+function useDevice() {
+  const [device, setDevice] = useState<
+    "android" | "ios" | "mac" | "windows" | "other"
+  >("other");
+
+  useEffect(() => {
+    const ua = navigator.userAgent.toLowerCase();
+
+    if (/android/.test(ua)) setDevice("android");
+    else if (/iphone|ipad|ipod/.test(ua)) setDevice("ios");
+    else if (/mac/.test(ua)) setDevice("mac");
+    else if (/win/.test(ua)) setDevice("windows");
+    else setDevice("other");
+  }, []);
+
+  return device;
 }
 
 // ==================
 // Helper
 // ==================
 
-const isExternalLink = (url: string) => url.startsWith('http');
+const isExternalLink = (url: string) => url.startsWith("http");
 
 // ==================
 // Projects Data
@@ -43,115 +73,133 @@ const isExternalLink = (url: string) => url.startsWith('http');
 
 const projects: Project[] = [
   {
-    title: 'Emerald Beauty User App',
-    subtitle: 'Flutter Beauty Services App',
+    title: "Emerald Beauty User App",
+    subtitle: "Flutter Beauty Services App",
     icon: Smartphone,
     points: [
-      'Flutter-based mobile application',
-      'Stripe & Apple Pay integration',
-      'Secure online payments',
-      'API integrations',
-      'User-friendly booking system',
+      "Flutter-based mobile application",
+      "Stripe & Apple Pay integration",
+      "Secure online payments",
+      "API integrations",
+      "User-friendly booking system",
     ],
-    link: 'https://play.google.com/store/apps/details?id=com.emeraldbeauty.user',
+    storeLinks: [
+      {
+        type: "playStore",
+        url: "https://play.google.com/store/apps/details?id=com.emeraldbeauty.user",
+      },
+      {
+        type: "appStore",
+        url: "https://apps.apple.com/us/app/emerald-beauty-user-app/id6743151446",
+      },
+    ],
   },
 
   {
-    title: 'Emerald Beauty Employee App',
-    subtitle: 'Staff Management Application',
+    title: "Emerald Beauty Employee App",
+    subtitle: "Staff Management Application",
     icon: Smartphone,
     points: [
-      'Employee scheduling system',
-      'Booking management',
-      'Payment tracking',
-      'Flutter cross-platform app',
-      'Client management tools',
+      "Employee scheduling system",
+      "Booking management",
+      "Payment tracking",
+      "Flutter cross-platform app",
+      "Client management tools",
     ],
-    link: 'https://play.google.com/store/apps/details?id=com.emeraldbeauty.employeefreelancer',
+    storeLinks: [
+      {
+        type: "playStore",
+        url: "https://play.google.com/store/apps/details?id=com.emeraldbeauty.employeefreelancer",
+      },
+      {
+        type: "appStore",
+        url: "https://apps.apple.com/us/app/emerald-beauty-employee-app/id6743151533",
+      },
+    ],
   },
 
   {
-    title: 'HelpDesk Helper',
-    subtitle: 'Support Provider App',
+    title: "HelpDesk Helper",
+    subtitle: "Support Provider App",
     icon: MessageSquare,
     points: [
-      'Real-time video calling',
-      'Daily.co SDK integration',
-      'Ticket workflow system',
-      'Live customer support',
-      'Flutter-based solution',
+      "Real-time video calling",
+      "Daily.co SDK integration",
+      "Ticket workflow system",
+      "Live customer support",
+      "Flutter-based solution",
     ],
-    link: 'https://play.google.com/store/apps/details?id=com.helpdesk.helper',
+    storeLinks: [
+      {
+        type: "playStore",
+        url: "https://play.google.com/store/apps/details?id=com.helpdesk.helper",
+      },
+      {
+        type: "appStore",
+        url: "https://apps.apple.com/us/app/helpdesk-helper/id6683304947",
+      },
+    ],
   },
 
   {
-    title: 'HelpDesk Instant Help',
-    subtitle: 'Customer Support App',
-    icon: MessageSquare,
-    points: [
-      'Instant customer assistance',
-      'Video & voice calling',
-      'Ticket management',
-      'Secure communication',
-      'Multi-platform support',
-    ],
-    link: 'https://play.google.com/store/apps/details?id=com.helpdesk.user',
-  },
-
-  {
-    title: 'Time Management App',
-    subtitle: 'Productivity Tool',
+    title: "Time Management App",
+    subtitle: "Productivity Tool",
     icon: Clock,
     points: [
-      'Task management system',
-      'Deadline reminders',
-      'Progress tracking',
-      'Local database (SQLite)',
-      'Smart notifications',
+      "Task management system",
+      "Deadline reminders",
+      "Progress tracking",
+      "Local database (SQLite)",
+      "Smart notifications",
     ],
-    link: '/contact',
+    link: "/contact",
   },
 
   {
-    title: 'QraftConnect',
-    subtitle: 'B2B Construction Platform',
+    title: "QraftConnect",
+    subtitle: "B2B Construction Platform",
     icon: MapPin,
     points: [
-      'Firebase real-time chat',
-      'Multi-language support',
-      'Advanced filtering',
-      'Authentication system',
-      'B2B workflow tools',
+      "Firebase real-time chat",
+      "Multi-language support",
+      "Advanced filtering",
+      "Authentication system",
+      "B2B workflow tools",
     ],
-    link: 'https://apps.apple.com/us/app/qraftconnect/id6503102588',
+    storeLinks: [
+      {
+        type: "appStore",
+        url: "https://apps.apple.com/us/app/qraftconnect/id6503102588",
+      },
+    ],
   },
 
   {
-    title: 'Caretaker App',
-    subtitle: 'Elderly Care Solution',
+    title: "Caretaker App",
+    subtitle: "Elderly Care Solution",
     icon: Heart,
     points: [
-      'Live location tracking',
-      'Emergency calling',
-      'Push notifications',
-      'Firebase integration',
-      'Care monitoring system',
+      "Live location tracking",
+      "Emergency calling",
+      "Push notifications",
+      "Firebase integration",
+      "Care monitoring system",
     ],
-    link: '/contact',
+    link: "/contact",
   },
 
   {
-    title: 'Tabarru Charity App',
-    subtitle: 'Donation Platform',
+    title: "Tabarru Charity App",
+    subtitle: "Donation Platform",
     icon: CreditCard,
     points: [
-      'Secure donations',
-      'Stripe & SumUp SDK',
-      'Easy payment flow',
-      'Mosque support system',
-      'Flutter development',
+      "Secure donations",
+      "Stripe & SumUp SDK",
+      "Easy payment flow",
+      "Mosque support system",
+      "Flutter development",
     ],
-    link: '/contact',
+    link: "/contact",
   },
 ];
 
@@ -160,13 +208,40 @@ const projects: Project[] = [
 // ==================
 
 export default function ProjectsCards() {
+  const device = useDevice();
+
+  // Pick correct link based on device
+  const getProjectLink = (project: Project) => {
+    if (project.storeLinks?.length) {
+      if (device === "android") {
+        return (
+          project.storeLinks.find((l) => l.type === "playStore")?.url ||
+          project.link ||
+          "/contact"
+        );
+      }
+
+      if (device === "ios" || device === "mac") {
+        return (
+          project.storeLinks.find((l) => l.type === "appStore")?.url ||
+          project.link ||
+          "/contact"
+        );
+      }
+    }
+
+    return project.link || "/contact";
+  };
+
   return (
     <section className="relative py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => {
             const Icon = project.icon;
-            const external = isExternalLink(project.link);
+
+            const finalLink = getProjectLink(project);
+            const external = isExternalLink(finalLink);
 
             return (
               <motion.div
@@ -209,9 +284,9 @@ export default function ProjectsCards() {
                     className="w-full rounded bg-blue-400 hover:bg-blue-300 text-white border-0 focus-visible:ring-0"
                   >
                     <Link
-                      href={project.link}
-                      target={external ? '_blank' : '_self'}
-                      rel={external ? 'noopener noreferrer' : undefined}
+                      href={finalLink}
+                      target={external ? "_blank" : "_self"}
+                      rel={external ? "noopener noreferrer" : undefined}
                     >
                       <span className="flex items-center justify-center text-black">
                         View Project

@@ -202,7 +202,7 @@ const About = () => {
             Ready to Start Your Journey?
           </h2>
           <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            Join the growing list of successful businesses that trust SuperFix Services for their digital transformation.
+            Join the growing list of successful businesses that trust TechMate Services for their digital transformation.
           </p>
           <Button asChild size="lg" variant="secondary" className='bg-slate-50 text-gray-600 rounded' >
             <Link href="/contact">Schedule a Call</Link>

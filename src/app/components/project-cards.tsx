@@ -142,6 +142,29 @@ const projects: Project[] = [
   },
 
   {
+    title: "HelpDesk Instant Help",
+    subtitle: "Support Customer App",
+    icon: MessageSquare,
+    points: [
+      "Real-time video calling",
+      "Daily.co SDK integration",
+      "Ticket workflow system",
+      "Live customer support",
+      "Flutter-based solution",
+    ],
+    storeLinks: [
+      {
+        type: "playStore",
+        url: "https://play.google.com/store/apps/details?id=com.helpdesk.user&pcampaignid=web_share",
+      },
+      {
+        type: "appStore",
+        url: "https://apps.apple.com/us/app/helpdesk-instant-help/id6660715086",
+      },
+    ],
+  },
+
+  {
     title: "Time Management App",
     subtitle: "Productivity Tool",
     icon: Clock,
